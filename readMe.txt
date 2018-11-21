@@ -1,0 +1,1 @@
+在打开的html文件链接前增加htmlpreview.github.io/?链接
