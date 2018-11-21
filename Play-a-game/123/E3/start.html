@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		body{
+			background-color: #000;
+		}
+		 /* #bg{
+			position: fixed;
+			left:0;
+			top:0;
+			z-index: -10;
+			width: 100%;
+			height: 100%;
+			background:#;
+			background-size: 100% 100%;
+		} */
+			#start{
+			position: fixed;
+			left:0;
+			top:0;
+			z-index: 99;
+			width: 100%;
+			height: 100%;
+			background: url("imgs/ps4_control.png");
+			background-size: 100% 100%;
+		}
+		#start #control{
+			width: 190px;
+			height: 150px;
+			display: flex;
+			position: absolute;
+			left: 50%; 
+			transform: translate(-50%,-50%);
+			top:30%;
+			opacity: 0;
+			margin:20px 0px;
+			animation: myfirst 2s 1s;
+			/* animation-iteration-count:1; */
+			/* -webkit-animation: myfirst 2s; */
+		 }
+		 #start #control{
+			 transition: all 1s;
+			 opacity: 1;
+			 margin:0;
+ 		}
+		@keyframes myfirst{
+ 			0%?? {width: 190px;height: 150px;}
+			25%? {width: 240px;height: 190px;}
+ 			50%? {width: 290px;height: 240px;}
+ 			75%? {width: 310px;height: 260px;}
+ 			100% {width: 380px;height: 300px;opacity: 1;}
+		 } 
+		 #shows{
+			width: 100%;
+			height: 20%;
+			position: absolute;
+			left:0;
+			bottom:0;
+			/* display: none; */
+		 }
+		 #footBar{
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 20%;
+ 			background-color: rgba(0,0,0,0.5);
+		 }
+		 #selectbar{
+			 width: 100%;
+			height: 20%;
+			 z-index: 15;
+			 position: fixed;
+			 left:0;
+			bottom:0;
+ 			opacity: 1;
+		 }
+		#selectbar img{
+			display: block;
+			width: 300px;
+			border: 3px solid #fff;
+			border-radius: 5px;
+		}
+		#selectbar img:hover{
+			box-shadow: 0px 0px 20px #fff;
+ 			cursor:pointer;
+		}
+		#selectbar ul{
+			list-style: none;
+			display: flex;
+			justify-content: space-around;
+		}
+		#startBg{
+			width: 100%;
+		}
+		#startBg img{
+			width: 100%;
+			position: absolute;
+			top:0;
+			left:0;
+			display: none;
+		}
+		video{
+			position: fixed;
+			left:0;
+			top:0;
+			display: none;
+		}
+		#videoUc4{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div id="bg">
+	</div> -->
+	<video id="videoDi" src="./video/Di.mp4" width="100%"></video>
+	<video id="videoGod" src="./video/GodOfWar.mp4" width="100%"></video>
+	<video id="videoUc4" src="./video/un4CG.mp4" width="100%"></video>
+	<div id="start">
+		<img id="control" src="imgs/control.png" alt="">
+	</div>
+	<div id="startBg">
+		<img id="us4cg" src="./imgs/us4cg.jpg" alt="">
+		<img id="dtl" src="./imgs/ditilvcg.jpg" alt="">
+		<img id="gowcg" src="./imgs/godcg.jpg" alt="">
+	</div>
+		<div id="shows">
+			<div id="footBar">
+				<div id="selectbar">
+					<ul>
+						<li id="uc44">
+							<img src="./imgs/uc44.png" alt="">
+						</li>
+						<li id="ditelv">
+							<img src="./imgs/ditelv.jpg" alt="">
+						</li>
+						<li id="godofwar">
+							<img src="./imgs/godofwar.png" alt="">
+						</li>
+					</ul>
+					</div>
+				</div>
+		</div>
+</body>
+<script src="./js/jquery-3.0.0.min.js"></script>
+<script>
+	$(function () { 
+			setTimeout(function () { 
+			$('#start').fadeOut();
+			},2500)
+		 setTimeout(function () { 
+			$('#shows').fadeIn();
+		  },4000)
+		 $('#uc44').click(function () {
+			 GodOfWarPause();
+			 Dipause(); 
+			 $('#us4cg').fadeIn().delay(2000).fadeOut();
+			 $('#footBar').hide();
+			 setTimeout(function () {
+				 $('#videoUc4').show();
+				 videoUc4.play();
+			  },2600)
+		   })
+		   $('#ditelv').click(function () {
+			   uc4pause();
+			   GodOfWarPause();
+			 $('#dtl').fadeIn().delay(2000).fadeOut();
+			  $('#footBar').hide();
+			  setTimeout(function () {
+					$('#videoDi').show();
+				   videoDi.play();
+			   }, 2800)
+		   })
+		    $('#godofwar').click(function () {
+				 uc4pause();
+				Dipause();
+			 $('#gowcg').fadeIn().delay(2000).fadeOut();
+			  $('#footBar').hide();
+			   setTimeout(function () {
+				   $('#videoGod').show();
+					videoGod.play();
+				}, 2800)
+		   })
+		   $('#uc44').mouseover(function () {
+			   $('#uc44').children('img').attr("src","./imgs/uc4.gif");
+		     })
+		   $('#uc44').mouseout(function () { 
+			   $('#uc44').children('img').attr('src','./imgs/uc44.png');
+		    })   
+			$('#ditelv').mouseover(function () {
+			   $('#ditelv').children('img').attr("src","./imgs/Digif.gif");
+		     })
+		   $('#ditelv').mouseout(function () { 
+			   $('#ditelv').children('img').attr('src','./imgs/ditelv.jpg');
+		    })  
+			$('#godofwar').mouseover(function () {
+			   $('#godofwar').children('img').attr("src","./imgs/Godgif.gif");
+		     })
+		   $('#godofwar').mouseout(function () { 
+			   $('#godofwar').children('img').attr('src','./imgs/godofwar.png');
+		    })  
+			$('#shows').mouseenter(function () { 
+			 $('#footBar').fadeIn();
+			 })
+			 $('#shows').mouseleave(function () { 
+			 $('#footBar').fadeOut();
+			 })
+		//  $(document).click(function () {
+		// 		 $('#footBar').fadeIn();
+		// 	 })
+		function uc4pause() {
+			 $('#videoUc4').hide();
+ 				videoUc4.pause();
+		  }
+		  function Dipause() {
+			$('#videoDi').hide();
+			videoDi.pause();
+		}
+		  function GodOfWarPause() {
+ 			$('#videoGod').hide();
+			 videoGod.pause();
+		}
+	 })
+</script>
+</html>

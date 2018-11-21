@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="{utf-8}">
+  <title></title>
+  <script src="./js/jquery-1.4.4.min.js"></script>
+  <!-- <link rel="stylesheet" href="./css/animate.min.css"> -->
+  <style>
+    body {
+      background: url('./imgs/bg.jpg');
+      overflow: hidden;
+    }
+
+    #box {
+      width: 100%;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      cursor: url(./imgs/Green.png), auto;
+    }
+
+    #tubiao {
+      width: 200px;
+      position: relative;
+      margin-top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #bq1 {
+      display: block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: -22px;
+      left: 600px;
+    }
+
+    #box1 {
+      width: 300px;
+      height: 100px;
+      background-color: white;
+      position: absolute;
+      left: 0;
+      top: 0;
+      box-shadow: 4px 3px 5px #888888;
+      opacity: 0.9;
+      display: none;
+    }
+
+    #box1 span {
+      width: 100px;
+      display: block;
+      margin: 20px auto;
+      margin-left: 180px;
+    }
+
+    #savaNum {
+      color: white;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      font-size: 24px;
+      font-family: '微软雅黑';
+      font-weight: bold;
+
+    }
+    #tubiao img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+    #tro{
+            width: 260px;
+            height: 70px;
+            background-color: rgb(255, 254, 254);
+            position: relative;
+            left:-263px;
+            top:40px;
+            box-shadow: 0px 0px 3px white;
+            z-index: 10;
+        }
+ #tro img{
+   width: 50px;
+   height: 50px;
+   position: absolute;
+   top:10px;
+   left:30px;
+ }
+        #tro #get{
+            position: absolute;
+            left:100px;
+            top: 10px;
+            font-family: '微软雅黑';
+            font-weight: bold;
+            font-size: 20px;
+        }
+        #tro #tips{
+            position: absolute;
+            left:106px;
+            top: 37px;
+            font-family: '微软雅黑';
+            color:red;
+            font-weight: 700;
+        }
+        #message{
+            /* display: none; */
+            width: 260px;   
+            height: 70px;
+            background-color: snow;
+            position: relative;
+            top:-75px;
+            transition: all ease-in-out 0.3s;
+            z-index: 11;
+            box-shadow: 0px 0px 20px gold;
+            border-radius: 3px;
+        }
+        #message:hover{
+            width: 100%;
+            height: 1500px;
+            background-color: rgb(40, 69, 149);
+            transition: all ease-in-out 0.5s; 
+            cursor: default;
+        }
+        #getMessage{
+            position: absolute;
+            left:78px;
+            top: 23px;
+            font-family: '微软雅黑';
+            /* font-weight: bold; */
+        }
+        #Enter{
+            display: none;
+            z-index: 11;
+        }
+        #ps4Logo{
+            position: absolute;
+            left:50%;
+            margin-top: 55%;
+            margin-left:-200px;
+        }
+        #ps4M{
+            width: 600px;
+            position: absolute;
+            left:50%;
+            /* transform: translate(-50%); */
+            margin-left:-200px;
+            margin-top: 15%;
+        }
+        #ps4{
+            margin-left:20px;
+            margin:0px 10px;
+        }
+        #ps4M span{
+            display: block;
+            width: 600px;
+            color:white;
+            margin:50px auto;
+            font-family: '微软雅黑';
+        }
+        #ps4M span p{
+            /* padding-left:25px; */
+            font-size: 30px;
+        }
+        #ps4M a{
+            display: block;
+            text-decoration: none;
+            color:white;
+            font-size: 40px;
+            margin:10px auto;
+            
+        }
+        #ps4M a:hover{
+            color:hotpink;
+        }
+  </style>
+  <script src="./js/tools.js"></script>
+  <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <div id="message">
+      <img id="messImg" src="./imgs/message.png" alt="" style="width: 70px; height :70px">
+      <span id="getMessage">你有一条新的短讯息</span>
+      <div id="Enter">
+        <img id="ps4Logo" src="./imgs/ps4Logo.png" alt="">
+        <div id="ps4M">
+          <img id="ps4" src="./imgs/ps4.png" alt="">
+          <br>
+          <span id="lianjie">
+            <p>骨灰级玩家,Sony向您发来一封E3邀请函</p>
+            <a href="./E3/start.html">点击查看</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  <div id="tro">
+      <img id="jiangbei" src="./imgs/奖杯.png" alt="">
+      <span id="get">已获得奖杯!</span>
+    </div>
+  <audio id="sound" src="./video/sound.mp3"></audio>
+  <audio id="akReloading" src="./video/ak47_boltpull.wav"></audio>
+  <audio id="akFire" src="./video/ak47-2.wav"></audio>
+  <audio id="bgm" src="./video/disco.mp3"></audio>
+  <audio id="wii" src="./video/Wii.mp3"></audio>
+  <audio id="headShotM" src="./video/Headshot.wav"></audio>
+  <audio id="kill2M" src="./video/MultiKill_2_GR.wav"></audio>
+  <audio id="kill3M" src="./video/MultiKill_3_BL.wav"></audio>
+  <audio id="kill4M" src="./video/MultiKill_4_BL.wav"></audio>
+  <audio id="kill5M" src="./video/MultiKill_5_BL.wav"></audio>
+  <audio id="kill6M" src="./video/MultiKill_6_BL.wav"></audio>
+  <audio id="kill7M" src="./video/MultiKill_7_GR.wav"></audio>
+  <audio id="kill8M" src="./video/MultiKill_8_BL.wav"></audio>
+  <audio id="kill9M" src="./video/Grenadekill_9.wav"></audio>
+  <div id="box">
+    <img src="./imgs/AK-47.png" id="ak" style="position: absolute;">
+    <p id="tubiao">
+      <img id="bt" src="./imgs/headShot.png" alt="">
+      <img id="kill2Img" src="./imgs/kill2.png" alt="">
+      <img id="kill3Img" src="./imgs/kill3.png" alt="">
+      <img id="kill4Img" src="./imgs/kill4.png" alt="">
+      <img id="kill5Img" src="./imgs/kill5.png" alt="">
+      <img id="kill6Img" src="./imgs/kill6.png" alt="">
+      <img id="kill7Img" src="./imgs/kill7.png" alt="">
+      <img id="kill8Img" src="./imgs/kill8.png" alt="">
+      <img id="kill9Img" src="./imgs/kill9.png" alt="">
+    </p>
+    <img id="bq1" src="./imgs/qq/0.png" alt="">
+    <div id="savaNum">
+      <span>计数君:</span>
+      <span id="FN">0</span>
+    </div>
+  </div>
+
+</body>
+
+</html>
+<script>
+  var srceeW = document.body.clientWidth;
+  var srceeH = document.body.offsetHeight;
+  var bq1 = document.getElementById('bq1');
+
+  var ak1 = document.getElementById('ak');
+
+  window.onmousemove = function (e) {
+    e = e || window.event;
+
+    var x = getEventPage(e).pageX;
+    var y = getEventPage(e).pageY;
+
+    ak1.style.left = x + 'px';
+    ak1.style.top = y + 'px';
+  }
+  var trophy = 0;
+  var fireNum = 0;
+  var killNum = 0;
+  var speed = 1;
+  var speeds = 12000;
+  $(function () {
+    
+    var SH = $(document).height();
+    var SW = $(document).width();
+    xia('#bq1', speeds);
+    $('#box').mousedown(function () {
+      bgmPlay();
+      if (fireNum == 0) {
+        akReady();
+      } else {
+        firePlay();
+        $('#ak').attr('src', './imgs/AK-fire.png')
+      }
+      fireNum++;
+      $('#FN').html(fireNum);
+      getRandomColor();
+      if (killNum >= 9) {
+        killNum = 1;
+      }
+    })
+    $('#box').mouseup(function () {
+      $('#ak').attr('src', './imgs/AK-47.png')
+    })
+
+    function firePlay() {
+      akFire.play();
+    }
+
+    function akReady() {
+      akReloading.play();
+    }
+
+    function bgmPlay() {
+      bgm.play();
+    }
+    function wiiPlay() { 
+      wii.play();
+     }
+
+    $('#box').on('click', '#bq1', function () {
+      $('#bq1').attr('src', './imgs/qq/pq.png').fadeOut();
+      // $('#bq1').addClass('animated shake');
+      delbq();
+      killNum++;
+      switch (killNum) {
+        case 1:
+          headShotM.play();
+          killTips('#bt');
+          trophy('FirstBlood!');
+          sound();
+          break;
+        case 2:
+          kill2M.play();
+          killTips('#kill2Img');
+          break;
+        case 3:
+          kill3M.play();
+          killTips('#kill3Img');
+          trophy('表情包杀手!'); 
+          break;
+        case 4:
+          kill4M.play();
+          killTips('#kill4Img');
+          break;
+        case 5:
+          kill5M.play();
+          killTips('#kill5Img');
+          trophy('疯狂杀戮!!!'); 
+          break;
+        case 6:
+          kill6M.play();
+          killTips('#kill6Img');
+          break;
+        case 7:
+          kill7M.play();
+          killTips('#kill7Img');
+           trophy('枪王之王!!!!');
+          break;
+        case 8:
+          kill8M.play();
+          killTips('#kill8Img');
+          break;
+        case 9:
+          kill9M.play();
+          killTips('#kill9Img');
+           getE3Enter();
+           sound();
+          break;
+      }
+    })
+    // getE3Enter();
+    
+    function moveInBq() {
+      $('#bq1').mouseenter(function () {
+        $('*').css({
+          cursor: "url(./imgs/foucs.png),auto"
+        })
+      })
+    }
+    moveInBq();
+
+    function moveOutBq() {
+      $('#bq1').mouseleave(function () {
+        $('*').css({
+          cursor: "url(./imgs/green.png),auto"
+        })
+      })
+    }
+    moveOutBq();
+
+    // 元素下落动画函数
+    function xia(ele, speed) {
+      $(ele).animate({
+        top: $(document).height()
+      }, speed, 'linear')
+    }
+
+    //随机生成表情
+    function sj() {
+      var result = Math.floor(Math.random() * 10)
+      var x = Math.floor(Math.random() * SW / 24) * 24;
+      // console.log(x);
+      var newBq = $('<img id="bq1" style="left:' + x + 'px" src="./imgs/qq/' + result + '.png">');
+      $('#box').append(newBq);
+      speeds -= 600;
+      moveInBq();
+      moveOutBq();
+    }
+    //计时删除表情
+    function delbq() {
+      setTimeout(function () {
+        $('#bq1').remove();
+        sj();
+        xia('#bq1', speeds);
+      }, 1500)
+    }
+
+    function getRandomColor() {
+      /*0-255*/
+      var r = Math.floor(256 * Math.random());
+      var g = Math.floor(256 * Math.random());
+      var b = Math.floor(256 * Math.random());
+      var randomColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+      $('#savaNum').css('color', randomColor);
+    }
+
+    function killTips(ids) {
+      var img = $(ids);
+      img.animate({
+        opacity: 1,
+        height: '188px',
+        width: '188px',
+        left: 1,
+      }, 50);
+      img.animate({
+        left: -1,
+      }, 50);
+      img.animate({
+        height: '180px',
+        width: '180px',
+      }, 50);
+      img.animate({
+        opacity: 0,
+      }, 1500);
+    }
+     function trophy(content) {
+            $('#tro').fadeIn();
+            var tips =$("<span id='tips'>"+content+"</span>")
+            $('#tro').append(tips);
+            $('#tro').animate({
+            display:'block',
+            left:'0px',
+        },500);
+        setTimeout(function () { 
+            $('#tro').fadeOut(1000);
+            setTimeout(function () { 
+                $('#tro').css('left','-260px');
+                $('#tips').remove();
+             },1000)
+         },4000)
+        }
+        function sound() {
+           var s1 =$('#sound')[0];
+           setTimeout(function () { 
+             s1.play();
+            },1000)
+          }
+         function getE3Enter() {
+      $('#message').animate({
+        top: '0px'
+      });
+      $('#message').mouseenter(function () {
+        bgm.pause();
+        wiiPlay();
+        $('#getMessage').fadeOut();
+        $('#Enter').fadeIn(1000);
+        $('#messImg').fadeOut();
+        $('*').css({
+          cursor: "default",
+        })
+      })
+      $('#message').mouseleave(function () {
+        wii.pause();
+        $('#getMessage').fadeIn();
+        $('#Enter').hide();
+        $('#messImg').fadeIn();
+      })
+    }
+     
+ 
+  })
+</script>
